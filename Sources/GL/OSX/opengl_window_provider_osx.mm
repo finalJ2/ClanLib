@@ -65,7 +65,7 @@ ProcAddress *OpenGLWindowProvider::get_proc_address(const std::string& function_
 			throw Exception("Unable to find com.apple.opengl bundle");
 	}
 
-	return (ProcAddress *)CFBundleGetFunctionPointerForName(bundle, CFStringCreateWithCStringNoCopy(0, function_name.c_str(), CFStringGetSystemEncoding(), 0));
+	return (ProcAddress *)CFBundleGetFunctionPointerForName(bundle, CFStringCreateWithCString(kCFAllocatorDefault, function_name.c_str(), CFStringGetSystemEncoding()));
 }
 
 Rect OpenGLWindowProvider::get_geometry() const
