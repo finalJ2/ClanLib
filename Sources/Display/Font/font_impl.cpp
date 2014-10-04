@@ -302,7 +302,9 @@ void Font_Impl::load_font( Canvas &canvas, Sprite &sprite, const std::string &gl
 		Point offset(sprite_frame.offset);
 		offset.y -= glyph_cache.font_metrics.get_ascent();
 
-		glyph_cache.insert_glyph(canvas, glyph, sub_texture, offset, GlyphMetrics(Rectf(offset.x, offset.y, Sizef(increment.x, increment.y)), Sizef(increment.x, increment.y)));
+		Rectf r(offset.x, offset.y, Sizef(increment.x, increment.y));
+		Sizef s(increment.x, increment.y);
+		glyph_cache.insert_glyph(canvas, glyph, sub_texture, offset, GlyphMetrics(r, s));
 
 		sprite_index++;
 	}
